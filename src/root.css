@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.border-gradient {
+  --angle: 0deg;
+  width: 200px;
+  height: 200px;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(var(--angle), #12e4f3, #d53a9d);
+  animation: 5s rotate linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
