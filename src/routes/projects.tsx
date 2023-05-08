@@ -1,4 +1,4 @@
-import { Octokit } from "octokit";
+import { Octokit } from "@octokit/core";
 import {
   For,
   Show,
@@ -30,7 +30,7 @@ export function routeData() {
       userAgent: "CDE90/ethancoward.dev",
     });
 
-    const repos = await octokit.rest.repos.listForUser({
+    const repos = await octokit.request("GET /users/{username}/repos", {
       username: "CDE90",
     });
 
