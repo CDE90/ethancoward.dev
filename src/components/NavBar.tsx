@@ -12,7 +12,7 @@ interface NavLinkProps {
 
 export const NavLink: Component<NavLinkProps> = (props) => {
   return (
-    <li class="w-full border-b border-neutral-600 py-4 pl-3 md:ml-5 md:w-auto md:border-none md:p-0">
+    <li class="w-full border-b border-neutral-600 py-4 pl-3 hover:scale-105 md:ml-5 md:w-auto md:border-none md:p-0">
       <A href={props.path} activeClass="text-blue-500" end={true}>
         {props.title}
       </A>
@@ -70,6 +70,7 @@ const NavBar: Component = () => {
               <NavLink path="/" title="Home" />
               <NavLink path="/about" title="About" />
               <NavLink path="/contact" title="Contact" />
+              <NavLink path="/projects" title="Projects" />
             </ul>
 
             <button
@@ -85,6 +86,7 @@ const NavBar: Component = () => {
               <NavLink path="/" title="Home" />
               <NavLink path="/about" title="About" />
               <NavLink path="/contact" title="Contact" />
+              <NavLink path="/projects" title="Projects" />
             </ul>
           </Show>
         </div>

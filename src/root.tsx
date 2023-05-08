@@ -48,12 +48,12 @@ export default function Root() {
         <Suspense>
           <ErrorBoundary>
             <NavBar />
-            <div class="pt-24">
+            <main class="mt-24">
               <Routes>
                 <FileRoutes />
               </Routes>
               <div class="h-16 w-full" />
-            </div>
+            </main>
             <Footer />
           </ErrorBoundary>
         </Suspense>
