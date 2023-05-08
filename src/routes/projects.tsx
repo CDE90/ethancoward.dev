@@ -130,7 +130,7 @@ const Projects: ParentComponent = () => {
                 class="rounded-md border-2 border-black p-2 transition-all hover:scale-105 hover:bg-black hover:text-white dark:border-white dark:hover:bg-white dark:hover:text-black"
               >
                 <div class="flex flex-row items-center">
-                  <h2 class="text-xl font-bold">{repo.name}</h2>
+                  <h2 class="text-xl font-bold text-blue-500">{repo.name}</h2>
                   <ul class="ml-auto hidden flex-row items-center gap-2 sm:flex">
                     <For each={repo.topics ?? []}>
                       {(topic) => (

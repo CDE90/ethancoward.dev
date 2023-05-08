@@ -43,6 +43,8 @@ export default function Root() {
         <Link rel="manifest" href="/site.webmanifest" />
         <Meta name="msapplication-TileColor" content="#2d89ef" />
         <Meta name="theme-color" content="#12e4f3" />
+        <Link rel="preconnect" href="https://rsms.me/" />
+        <Link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Head>
       <Body class="bg-gray-100 text-gray-800 dark:bg-neutral-900 dark:text-gray-200">
         <Suspense>
