@@ -15,6 +15,16 @@ const Footer: Component = () => {
       .then((data) => setNowPlaying(data));
   });
 
+  createEffect(() => {
+    const interval = setInterval(() => {
+      fetch("/api/now-playing")
+        .then((res) => res.json())
+        .then((data) => setNowPlaying(data));
+    }, 30000);
+
+    return () => clearInterval(interval);
+  });
+
   return (
     <footer class="flex w-full flex-col">
       <div class="flex w-full flex-col items-center bg-gradient-to-r from-blue-500 to-purple-500 py-5 text-center text-white">
@@ -34,15 +44,12 @@ const Footer: Component = () => {
                 class="group transition-all duration-300 ease-in-out"
                 target="_blank"
               >
-                <span class="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat text-sm transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]">
-                  {nowPlaying().songName}
+                <span class="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]">
+                  {nowPlaying().songName} by {nowPlaying().artist}
                 </span>
               </A>
-              <span class="text-sm"> by {nowPlaying().artist}</span>
             </Show>
-            <Show when={!nowPlaying().isPlaying}>
-              <span class="text-sm">Nothing</span>
-            </Show>
+            <Show when={!nowPlaying().isPlaying}>Nothing</Show>
           </span>
         </div>
         <p class="mt-2 text-sm">© 2023 Ethan Coward</p>
