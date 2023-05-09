@@ -21,8 +21,7 @@ const Home: ParentComponent = () => {
               <em>watching TV shows</em>, and <em>listening to music</em>. I
               also enjoy{" "}
               <em>learning about new technologies and programming languages</em>
-              . Fun fact: my nickname is <strong>CDE</strong> because it's my
-              initials backwards.
+              .
             </p>
           </div>
         </div>
