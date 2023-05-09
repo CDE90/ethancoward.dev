@@ -9,7 +9,7 @@ export default defineConfig({
       adapter: vercel({
         edge: false,
         prerender: {
-          expiration: false,
+          expiration: 60 * 60 * 24 * 1000,
         },
       }),
     }),
