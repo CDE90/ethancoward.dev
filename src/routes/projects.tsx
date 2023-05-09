@@ -128,6 +128,7 @@ const Projects: ParentComponent = () => {
               <A
                 href={repo.html_url}
                 class="rounded-md border-2 border-black p-2 transition-all hover:scale-105 hover:bg-black hover:text-white dark:border-white dark:hover:bg-white dark:hover:text-black"
+                target="_blank"
               >
                 <div class="flex flex-row items-center">
                   <h2 class="text-xl font-bold text-blue-500">{repo.name}</h2>
