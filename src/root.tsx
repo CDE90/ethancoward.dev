@@ -45,12 +45,13 @@ export default function Root() {
         <Meta name="theme-color" content="#12e4f3" />
         <Link rel="preconnect" href="https://rsms.me/" />
         <Link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-        <script defer src="https://litics.ecwrd.com/script.js" />
-        <script
+        <script defer src="http://localhost:3000/script.js" />
+        {/* <script defer src="https://litics.ecwrd.com/script.js" /> */}
+        {/* <script
           defer
           data-domain="ethancoward.dev"
           src="https://plausible.io/js/script.js"
-        />
+        /> */}
       </Head>
       <Body class="bg-gray-100 text-gray-800 dark:bg-neutral-900 dark:text-gray-200">
         <Suspense>
