@@ -52,7 +52,7 @@ const Footer: Component = () => {
             <Show when={!nowPlaying().isPlaying}>Nothing</Show>
           </span>
         </div>
-        <p class="mt-2 text-sm">© 2023 Ethan Coward</p>
+        <p class="mt-2 text-sm">© 2024 Ethan Coward</p>
       </div>
     </footer>
   );
