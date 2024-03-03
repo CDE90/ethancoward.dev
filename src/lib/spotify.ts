@@ -1,11 +1,15 @@
+import "server-only";
+
 /*
   Credit: https://github.com/ivenuss/jakubh.com/blob/01acf4a15826229a56bc304d28437f07583b92ee/src/lib/server/spotify.ts
   Getting refresh token: https://khalilstemmler.com/articles/tutorials/getting-the-currently-playing-song-spotify/
 */
 
-const client_id = process.env.SPOTIFY_CLIENT_ID;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN ?? "";
+import { env } from "~/env";
+
+const client_id = env.SPOTIFY_CLIENT_ID;
+const client_secret = env.SPOTIFY_CLIENT_SECRET;
+const refresh_token = env.SPOTIFY_REFRESH_TOKEN;
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
@@ -18,7 +22,7 @@ type TokenResponse = {
   token_type: string;
 };
 
-const getAccessToken = async (): Promise<TokenResponse> => {
+async function getAccessToken() {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: "POST",
     headers: {
@@ -31,8 +35,8 @@ const getAccessToken = async (): Promise<TokenResponse> => {
     }),
   });
 
-  return response.json();
-};
+  return response.json() as Promise<TokenResponse>;
+}
 
 export type NowPlaying = {
   isPlaying: boolean;
@@ -44,7 +48,7 @@ export type NowPlaying = {
   duration_ms?: number;
 };
 
-export const getNowPlaying = async (): Promise<NowPlaying> => {
+export async function getNowPlaying() {
   const { access_token } = await getAccessToken();
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
@@ -57,13 +61,26 @@ export const getNowPlaying = async (): Promise<NowPlaying> => {
     return { isPlaying: false };
   }
 
-  const data = await response.json();
+  const data = (await response.json()) as {
+    item: {
+      album: {
+        images: { url: string }[];
+      };
+      artists: { name: string }[];
+      name: string;
+      duration_ms: number;
+      external_urls: { spotify: string };
+    };
+    progress_ms: number;
+    is_playing: boolean;
+    currently_playing_type: string;
+  };
 
   if (data.currently_playing_type === "ad") {
     return { isPlaying: false };
   }
 
-  const albumArt = data.item.album.images[0].url;
+  const albumArt = data.item.album.images[0]?.url;
   const artist = data.item.artists
     .map((_artist: { name: string }) => _artist.name)
     .join(", ");
@@ -80,5 +97,5 @@ export const getNowPlaying = async (): Promise<NowPlaying> => {
     songName,
     progress_ms,
     duration_ms,
-  };
-};
+  } as NowPlaying;
+}
