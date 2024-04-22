@@ -70,3 +70,4 @@ export default function Home() {
 export const metadata = {
   title: "Ethan Coward | Home",
 };
+export const runtime = "edge";

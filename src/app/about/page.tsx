@@ -5,3 +5,5 @@ export default function About() {
     </>
   );
 }
+
+export const runtime = "edge";

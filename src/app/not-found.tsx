@@ -22,3 +22,4 @@ export const metadata = {
   title: "Page Not Found...",
   description: "The page you were looking for was not found...",
 };
+export const runtime = "edge";

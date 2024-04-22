@@ -31,3 +31,4 @@ export default async function Projects() {
 }
 
 export const dynamic = "force-dynamic";
+export const runtime = "edge";

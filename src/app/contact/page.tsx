@@ -5,3 +5,5 @@ export default function Contact() {
     </>
   );
 }
+
+export const runtime = "edge";
