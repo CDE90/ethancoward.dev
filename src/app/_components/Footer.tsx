@@ -12,7 +12,10 @@ export function Footer() {
   });
 
   useEffect(() => {
-    fetch("/api/now-playing", { cache: "no-store" })
+    fetch("/api/now-playing", {
+      // We use a POST method to prevent caching
+      method: "POST",
+    })
       .then((res) => res.json())
       .then((data) => setNowPlaying(data as NowPlaying))
       .catch((err) => console.error(err));
@@ -20,7 +23,10 @@ export function Footer() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch("/api/now-playing", { cache: "no-store" })
+      fetch("/api/now-playing", {
+        // We use a POST method to prevent caching
+        method: "POST",
+      })
         .then((res) => res.json())
         .then((data) => setNowPlaying(data as NowPlaying))
         .catch((err) => console.error(err));
