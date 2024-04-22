@@ -13,7 +13,7 @@ export function NavLink({ path, title }: { path: string; title: string }) {
     <li className="w-full border-b border-neutral-600 py-4 pl-3 hover:scale-105 md:ml-5 md:w-auto md:border-none md:p-0">
       <Link
         href={path}
-        className={`${pathname === path ? "text-blue-500" : ""}`}
+        className={`${pathname === path || (path === "/projects" && pathname.startsWith("/p/")) ? "text-blue-500" : ""}`}
       >
         {title}
       </Link>
@@ -45,15 +45,8 @@ export function NavBar() {
     };
   }, []);
 
-  // const capitalise = (str: string) => {
-  //   return str.charAt(0).toUpperCase() + str.slice(1);
-  // };
-
   return (
     <>
-      {/* <Title>{`Ethan Coward | ${capitalise(
-        pathname.slice(1) || "home",
-      )}`}</Title> */}
       <nav
         className={`fixed z-50 w-full py-5 ${
           displayBg || open ? "backdrop-blur-lg backdrop-saturate-150" : ""
@@ -70,8 +63,8 @@ export function NavBar() {
 
             <ul className="ml-auto hidden items-center text-xl font-bold md:flex">
               <NavLink path="/" title="Home" />
-              <NavLink path="/about" title="About" />
-              <NavLink path="/contact" title="Contact" />
+              {/* <NavLink path="/about" title="About" /> */}
+              {/* <NavLink path="/contact" title="Contact" /> */}
               <NavLink path="/projects" title="Projects" />
             </ul>
 
@@ -86,8 +79,8 @@ export function NavBar() {
           {open ? (
             <ul className="mx-auto flex max-w-screen-sm flex-col items-center text-xl font-bold md:hidden">
               <NavLink path="/" title="Home" />
-              <NavLink path="/about" title="About" />
-              <NavLink path="/contact" title="Contact" />
+              {/* <NavLink path="/about" title="About" /> */}
+              {/* <NavLink path="/contact" title="Contact" /> */}
               <NavLink path="/projects" title="Projects" />
             </ul>
           ) : null}

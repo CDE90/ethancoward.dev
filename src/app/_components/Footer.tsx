@@ -1,6 +1,6 @@
 "use client";
 
-import { GithubIcon, SpotifyIcon } from "~/app/_components/icons";
+import { GithubIcon, SpotifyIcon, MailIcon } from "~/app/_components/icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { NowPlaying } from "~/lib/spotify";
@@ -38,12 +38,17 @@ export function Footer() {
   return (
     <footer className="flex w-full flex-col">
       <div className="flex w-full flex-col items-center bg-gradient-to-r from-blue-500 to-purple-500 py-5 text-center text-white">
-        <Link
-          href="https://github.com/CDE90/ethancoward.dev"
-          className="flex flex-row items-center gap-2"
-        >
-          <GithubIcon size={32} />
-        </Link>
+        <div className="flex flex-row items-center gap-2">
+          <Link href="https://github.com/CDE90/ethancoward.dev" target="_blank">
+            <GithubIcon size={24} />
+          </Link>
+          <Link href="https://open.spotify.com/user/cdeyolo/" target="_blank">
+            <SpotifyIcon size={24} color="#ffffff" />
+          </Link>
+          <Link href="mailto:ethan@ethancoward.dev">
+            <MailIcon size={24} />
+          </Link>
+        </div>
         <div className="mt-2 flex flex-row items-center gap-2">
           <SpotifyIcon size={32} color="#ffffff" />
           <span className="text-sm">
