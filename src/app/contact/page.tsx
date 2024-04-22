@@ -17,7 +17,7 @@ export default function Home() {
                 ethan@ethancoward.dev
               </a>
             </strong>
-            . I'm always happy to help!
+            . I&apos;m always happy to help!
           </p>
         </div>
       </div>

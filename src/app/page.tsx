@@ -4,27 +4,29 @@ export default function Home() {
       <div className="px-4 pt-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <h1 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100">
-            Hey, I'm <em>Ethan</em>
+            Hey, I&apos;m <em>Ethan</em>
           </h1>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            I'm an 18 y/o CS student from the UK. I like{" "}
+            I&apos;m an 18 y/o CS student from the UK. I like{" "}
             <strong>making things</strong> and{" "}
-            <strong>listening to music</strong>. I'd like to learn more about{" "}
-            <strong>web development</strong> and <strong>security</strong>.
+            <strong>listening to music</strong>. I&apos;d like to learn more
+            about <strong>web development</strong> and <strong>security</strong>
+            .
           </p>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            For the past few years, I've been part of the data team at{" "}
-            <strong>HiveHR</strong>, a cool software company. I've learnt tonnes
-            about libraries like <strong>Pandas</strong>, <strong>NumPy</strong>
-            , and <strong>Matplotlib</strong>, plus I've become a pro at making
-            data dance in <strong>Google Sheets</strong>.
+            For the past few years, I&apos;ve been part of the data team at{" "}
+            <strong>HiveHR</strong>, a cool software company. I&apos;ve learnt
+            tonnes about libraries like <strong>Pandas</strong>,{" "}
+            <strong>NumPy</strong>, and <strong>Matplotlib</strong>, plus
+            I&apos;ve become a pro at making data dance in{" "}
+            <strong>Google Sheets</strong>.
           </p>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            That's not it though, I've also been using{" "}
-            <strong>PowerPoint</strong> - not in the usual way though. I've been
-            developing solutions to automatically generate reports, allowing us
-            to deliver in-depth insights to our clients at <em>blazingly</em>{" "}
-            fast speeds.
+            That&apos;s not it though, I&apos;ve also been using{" "}
+            <strong>PowerPoint</strong> - not in the usual way though. I&apos;ve
+            been developing solutions to automatically generate reports,
+            allowing us to deliver in-depth insights to our clients at{" "}
+            <em>blazingly</em> fast speeds.
           </p>
         </div>
       </div>
@@ -67,8 +69,8 @@ export default function Home() {
                 ethancoward.dev Website
               </a>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                You're here! My personal website to showcase my projects and
-                other stuff.
+                You&apos;re here! My personal website to showcase my projects
+                and other stuff.
               </p>
             </li>
             <li>
@@ -118,7 +120,7 @@ export default function Home() {
                 ethan@ethancoward.dev
               </a>
             </strong>
-            . I'm always happy to help!
+            . I&apos;m always happy to help!
           </p>
         </div>
       </div>
