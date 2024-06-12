@@ -10,8 +10,8 @@
 
 .border-gradient {
   --angle: 0deg;
-  width: 200px;
-  height: 200px;
+  padding: 20px;
+  width: 100%;
   border: 5px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(var(--angle), #12e4f3, #d53a9d);

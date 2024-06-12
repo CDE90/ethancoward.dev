@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="mx-auto flex h-full max-w-2xl flex-col items-center px-4">
@@ -10,23 +12,28 @@ export default function Home() {
             I&apos;m an 18 y/o CS student from the UK. I like{" "}
             <strong>making things</strong> and{" "}
             <strong>listening to music</strong>. I&apos;d like to learn more
-            about <strong>web development</strong> and <strong>security</strong>
+            about <strong>web development</strong>,{" "}
+            <strong>data analysis</strong> and <strong>systems security</strong>
             .
           </p>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
             For the past few years, I&apos;ve been part of the data team at{" "}
-            <strong>HiveHR</strong>, a cool software company. I&apos;ve learnt
-            tonnes about libraries like <strong>Pandas</strong>,{" "}
-            <strong>NumPy</strong>, and <strong>Matplotlib</strong>, plus
-            I&apos;ve become a pro at making data dance in{" "}
-            <strong>Google Sheets</strong>.
+            <strong>HiveHR</strong>, a software company. I&apos;ve learnt tonnes
+            about libraries like <strong>Pandas</strong>, <strong>NumPy</strong>
+            , and <strong>Matplotlib</strong>, plus I&apos;ve become a pro at
+            automating data analysis in <strong>Google Sheets</strong>.
           </p>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            That&apos;s not it though, I&apos;ve also been using{" "}
-            <strong>PowerPoint</strong> - not in the usual way though. I&apos;ve
-            been developing solutions to automatically generate reports,
-            allowing us to deliver in-depth insights to our clients at{" "}
-            <em>blazingly</em> fast speeds.
+            As well as this, I have used <strong>PowerPoint</strong>{" "}
+            extensively. I&apos;ve used it to develop solutions to automatically
+            generate reports, which now gives us the ability to deliver in-depth
+            insights to our clients without having to spend hours on it.
+          </p>
+          <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
+            <em>
+              Please note that this site is still under construction, not all
+              information is up to date, and some pages are missing.
+            </em>
           </p>
         </div>
       </div>
@@ -101,6 +108,19 @@ export default function Home() {
             Here are a few projects that I&apos;ve built in my spare time. Click
             on the links above to learn more about each one.
           </p>
+          <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
+            I&apos;ve also contributed to various open source projects, but none
+            extensively enough to list here. If you&apos;re interested in
+            learning more about my contributions, check out my{" "}
+            <Link
+              href="https://github.com/CDE90"
+              className="text-blue-600 dark:text-blue-400"
+              target="_blank"
+            >
+              GitHub profile
+            </Link>
+            .
+          </p>
         </div>
       </div>
 
@@ -126,7 +146,7 @@ export default function Home() {
       </div>
 
       <div className="border-gradient flex items-center justify-center">
-        <span className="text-xl">Hello!</span>
+        <span className="text-xl">Thanks for visiting!</span>
       </div>
     </div>
   );
