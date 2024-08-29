@@ -51,11 +51,11 @@ export function ProjectList({ repos }: { repos: Repo[] }) {
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center px-4">
       <div className="ml-auto flex flex-row items-center">
-        <label className="mr-2 mt-2 block font-medium text-gray-700 dark:text-white">
+        <label className="mr-2 mt-2 block font-medium text-gray-700 dark:text-gray-300">
           Sort by:
         </label>
         <select
-          className="mt-2 block rounded-md border-2 border-black p-2 sm:text-sm dark:border-white dark:bg-neutral-900 dark:text-white"
+          className="mt-2 block rounded-md border-2 border-gray-300 p-2 text-sm transition-colors focus:border-gray-500 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-gray-200 dark:focus:border-gray-600"
           value={sort}
           onInput={(e) => setSort(e.currentTarget.value as SortOption)}
         >
@@ -66,21 +66,23 @@ export function ProjectList({ repos }: { repos: Repo[] }) {
         </select>
       </div>
 
-      <div className="mt-4 flex w-full flex-col gap-4">
+      <div className="mt-6 flex w-full flex-col gap-6">
         {sortedRepos.map((repo) =>
           repo.fork === false ? (
             <Link
               href={repo.html_url}
-              className="rounded-md border-2 border-black p-2 transition-all hover:scale-105 hover:bg-black hover:text-white dark:border-white dark:hover:bg-white dark:hover:text-black"
+              className="group rounded-lg border-2 border-gray-300 bg-white p-4 transition-all hover:border-gray-400 hover:shadow-md dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600"
               target="_blank"
               key={repo.name}
             >
-              <div className="flex flex-row items-center">
-                <h2 className="text-xl font-bold text-blue-500">{repo.name}</h2>
-                <ul className="ml-auto hidden flex-row items-center gap-2 sm:flex">
+              <div className="flex flex-row items-center justify-between">
+                <h2 className="text-xl font-bold text-gray-800 group-hover:text-gray-600 dark:text-gray-200 dark:group-hover:text-gray-300">
+                  {repo.name}
+                </h2>
+                <ul className="hidden flex-row items-center gap-2 sm:flex">
                   {repo.topics?.map((topic) => (
                     <li
-                      className="inline-block rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold text-gray-700 dark:bg-gray-700 dark:text-white"
+                      className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 dark:bg-neutral-700 dark:text-gray-300"
                       key={topic}
                     >
                       {topic}
@@ -88,12 +90,16 @@ export function ProjectList({ repos }: { repos: Repo[] }) {
                   ))}
                 </ul>
               </div>
-              <p>{repo.description}</p>
-              <div className="flex flex-row justify-between">
-                <div className="flex flex-row items-center gap-1">
-                  <StarIcon /> {repo.stargazers_count}
+              <p className="mt-2 text-gray-600 dark:text-gray-400">
+                {repo.description}
+              </p>
+              <div className="mt-4 flex flex-row justify-between text-sm">
+                <div className="flex flex-row items-center gap-1 text-yellow-600 dark:text-yellow-400">
+                  <StarIcon className="h-4 w-4" /> {repo.stargazers_count}
                 </div>
-                <p className="text-right">{repo.language}</p>
+                <p className="text-right text-gray-500 dark:text-gray-400">
+                  {repo.language}
+                </p>
               </div>
             </Link>
           ) : null,
@@ -104,24 +110,25 @@ export function ProjectList({ repos }: { repos: Repo[] }) {
 }
 
 const PlaceholderBox = () => (
-  <div className="rounded-md border-2 border-black p-2 transition-all dark:border-white">
-    <div className="flex flex-row items-center">
-      <div className="my-1 h-5 w-1/2 animate-pulse rounded-sm bg-gray-300 dark:bg-gray-700" />
-      <ul className="ml-auto hidden flex-row items-center gap-2 sm:flex">
+  <div className="rounded-lg border-2 border-gray-300 bg-white p-4 transition-all dark:border-neutral-700 dark:bg-neutral-800">
+    <div className="flex flex-row items-center justify-between">
+      <div className="h-6 w-1/3 animate-pulse rounded-md bg-gray-200 dark:bg-neutral-700" />
+      <div className="flex flex-row gap-2">
         {[1, 2, 3].map((topic) => (
-          <li key={topic}>
-            <div className="h-4 w-12 animate-pulse rounded-full bg-gray-300 px-3 py-1 dark:bg-gray-700" />
-          </li>
+          <div
+            key={topic}
+            className="h-5 w-16 animate-pulse rounded-full bg-gray-200 dark:bg-neutral-700"
+          />
         ))}
-      </ul>
-    </div>
-    <div className="my-1 h-6 w-3/4 animate-pulse rounded-sm bg-gray-300 dark:bg-gray-700" />
-    <div className="flex flex-row justify-between">
-      <div className="flex flex-row items-center gap-1">
-        <div className="h-4 w-4 animate-pulse rounded-full bg-gray-300 dark:bg-gray-700" />
-        <div className="h-4 w-8 animate-pulse rounded-sm bg-gray-300 dark:bg-gray-700" />
       </div>
-      <div className="my-1 h-4 w-24 animate-pulse rounded-sm bg-gray-300 dark:bg-gray-700" />
+    </div>
+    <div className="mt-3 h-4 w-3/4 animate-pulse rounded-md bg-gray-200 dark:bg-neutral-700" />
+    <div className="mt-4 flex flex-row justify-between">
+      <div className="flex flex-row items-center gap-2">
+        <div className="h-5 w-5 animate-pulse rounded-full bg-gray-200 dark:bg-neutral-700" />
+        <div className="h-4 w-10 animate-pulse rounded-md bg-gray-200 dark:bg-neutral-700" />
+      </div>
+      <div className="h-4 w-20 animate-pulse rounded-md bg-gray-200 dark:bg-neutral-700" />
     </div>
   </div>
 );
@@ -129,24 +136,13 @@ const PlaceholderBox = () => (
 export function ProjectListGlimmer() {
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center px-4">
-      <div className="ml-auto flex flex-row items-center">
-        <label className="mr-2 mt-2 block font-medium text-gray-700 dark:text-white">
-          Sort by:
-        </label>
-        <select
-          className="mt-2 block rounded-md border-2 border-black p-2 sm:text-sm dark:border-white dark:bg-neutral-900 dark:text-white"
-          defaultValue="stars"
-          disabled
-        >
-          <option value="stars">Stars</option>
-          <option value="name">Name</option>
-          <option value="created">Recently Created</option>
-          <option value="updated">Recently Updated</option>
-        </select>
+      <div className="mb-6 ml-auto flex flex-row items-center">
+        <div className="mr-2 h-5 w-16 animate-pulse rounded-md bg-gray-200 dark:bg-neutral-700" />
+        <div className="h-10 w-32 animate-pulse rounded-md bg-gray-200 dark:bg-neutral-700" />
       </div>
 
-      <div className="mt-4 flex w-full flex-col gap-4">
-        {Array.from({ length: 10 }).map((_, index) => (
+      <div className="mt-4 flex w-full flex-col gap-6">
+        {Array.from({ length: 5 }).map((_, index) => (
           <PlaceholderBox key={index} />
         ))}
       </div>

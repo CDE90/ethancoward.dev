@@ -10,10 +10,15 @@ export function NavLink({ path, title }: { path: string; title: string }) {
   const pathname = usePathname();
 
   return (
-    <li className="w-full border-b border-neutral-600 py-4 pl-3 hover:scale-105 md:ml-5 md:w-auto md:border-none md:p-0">
+    <li className="w-full border-b border-neutral-200 hover:bg-neutral-100 md:border-none md:hover:scale-105 md:hover:bg-transparent dark:border-neutral-700 dark:hover:bg-neutral-800 dark:md:hover:bg-transparent">
       <Link
         href={path}
-        className={`${pathname === path || (path === "/projects" && pathname.startsWith("/p/")) ? "text-blue-500" : ""}`}
+        className={`block px-6 py-4 md:ml-5 md:px-0 md:py-0 ${
+          pathname === path ||
+          (path === "/projects" && pathname.startsWith("/p/"))
+            ? "text-blue-500"
+            : ""
+        }`}
       >
         {title}
       </Link>
@@ -23,7 +28,6 @@ export function NavLink({ path, title }: { path: string; title: string }) {
 
 export function NavBar() {
   const pathname = usePathname();
-  const [displayBg, setDisplayBg] = useState(false);
   const [open, setOpen] = useState(false);
   const [prevLocation, setPrevLocation] = useState(pathname);
 
@@ -34,28 +38,15 @@ export function NavBar() {
     }
   }, [pathname, prevLocation]);
 
-  // rewrite the above solid-js code to the following react code
-  useEffect(() => {
-    const handleChange = () => {
-      setDisplayBg(window.scrollY > 0);
-    };
-    window.addEventListener("scroll", handleChange);
-    return () => {
-      window.removeEventListener("scroll", handleChange);
-    };
-  }, []);
-
   return (
     <>
       <nav
-        className={`fixed z-50 w-full py-5 ${
-          displayBg || open ? "backdrop-blur-lg backdrop-saturate-150" : ""
-        } top-0 flex h-24 flex-col items-center justify-center`}
+        className={`fixed top-0 z-50 w-full ${open ? "bg-white/95 dark:bg-neutral-900/95" : "bg-gradient-to-b from-white/100 to-white/0 pb-2 dark:from-neutral-900/100 dark:to-neutral-900/0"}`}
       >
-        <div className="w-full max-w-screen-sm">
-          <div className="flex w-full px-6 py-5">
-            <div className="flex w-full items-center gap-3 px-5">
-              <Link href="/" className="pb-1 text-xl font-bold">
+        <div className="mx-auto max-w-screen-sm">
+          <div className="flex h-24 w-full items-center px-6">
+            <div className="flex items-center gap-3">
+              <Link href="/" className="text-xl font-bold">
                 Ethan Coward
               </Link>
               <ThemeSwitcher />
@@ -63,29 +54,35 @@ export function NavBar() {
 
             <ul className="ml-auto hidden items-center text-xl font-bold md:flex">
               <NavLink path="/" title="Home" />
-              {/* <NavLink path="/about" title="About" /> */}
-              {/* <NavLink path="/contact" title="Contact" /> */}
               <NavLink path="/projects" title="Projects" />
             </ul>
 
             <button
               aria-label="Menu Button"
-              className="ml-auto text-xl md:hidden"
+              className="ml-auto text-2xl md:hidden"
               onClick={() => setOpen((prev) => !prev)}
             >
-              {open ? <CloseIcon /> : <MenuIcon />}
+              {open ? (
+                <CloseIcon className="h-6 w-6" />
+              ) : (
+                <MenuIcon className="h-6 w-6" />
+              )}
             </button>
           </div>
-          {open ? (
-            <ul className="mx-auto flex max-w-screen-sm flex-col items-center text-xl font-bold md:hidden">
+          {open && (
+            <ul className="flex w-full flex-col items-stretch pb-5 text-xl font-bold md:hidden">
               <NavLink path="/" title="Home" />
-              {/* <NavLink path="/about" title="About" /> */}
-              {/* <NavLink path="/contact" title="Contact" /> */}
               <NavLink path="/projects" title="Projects" />
             </ul>
-          ) : null}
+          )}
         </div>
       </nav>
+      {!open && (
+        <div
+          className="fixed top-0 -z-10 h-24 w-full backdrop-blur-xl backdrop-saturate-150"
+          aria-hidden="true"
+        />
+      )}
     </>
   );
 }

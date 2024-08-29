@@ -12,9 +12,9 @@ export default function Home() {
             <strong className="group text-blue-600 transition-all duration-300 ease-in-out dark:text-blue-400">
               <a
                 className="bg-gradient-to-r from-blue-600 to-blue-600 bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-300 ease-out group-hover:bg-[length:100%_2px] dark:from-blue-400 dark:to-blue-400"
-                href="mailto:ethan@ethancoward.dev"
+                href="mailto:hello@ethancoward.dev"
               >
-                ethan@ethancoward.dev
+                hello@ethancoward.dev
               </a>
             </strong>
             . I&apos;m always happy to help!

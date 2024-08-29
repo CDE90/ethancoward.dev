@@ -16,13 +16,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
         className={`font-sans ${inter.variable} flex h-screen flex-col justify-between bg-gray-100 text-gray-800 dark:bg-neutral-900 dark:text-gray-200`}
       >
         <NavBar />
         <main className="mb-auto mt-24 pb-8">{children}</main>
         <Footer />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function() {
+              function getInitialTheme() {
+                const storedTheme = localStorage.getItem('theme');
+                if (storedTheme) {
+                  return storedTheme;
+                }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+              }
+              const theme = getInitialTheme();
+              document.documentElement.classList.add(theme);
+            })();
+          `,
+          }}
+        />
       </body>
     </html>
   );
