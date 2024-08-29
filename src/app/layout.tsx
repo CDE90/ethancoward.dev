@@ -20,9 +20,13 @@ export default function RootLayout({
       <body
         className={`font-sans ${inter.variable} flex h-screen flex-col justify-between bg-gray-100 text-gray-800 dark:bg-neutral-900 dark:text-gray-200`}
       >
-        <NavBar />
+        <header>
+          <NavBar />
+        </header>
         <main className="mb-auto mt-24 pb-8">{children}</main>
-        <Footer />
+        <footer>
+          <Footer />
+        </footer>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -40,14 +44,37 @@ export default function RootLayout({
           `,
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "http://schema.org",
+              "@type": "Person",
+              name: "Ethan Coward",
+              url: "https://ethancoward.dev",
+              sameAs: [
+                "https://github.com/CDE90",
+                "https://www.linkedin.com/in/ethan-coward/",
+                "https://twitter.com/ethancoward_",
+              ],
+              jobTitle: "CS Student",
+              description:
+                "18 y/o CS student from the UK, interested in web development, data analysis, and systems security.",
+            }),
+          }}
+        />
       </body>
     </html>
   );
 }
 
 export const metadata: Metadata = {
-  title: "Ethan Coward",
-  description: "Personal website of Ethan Coward",
+  title: "Ethan Coward | Personal Website & Portfolio",
+  description:
+    "Ethan Coward's personal website showcasing projects, skills, and experiences in web development, data analysis, and systems security.",
+  keywords:
+    "Ethan Coward, web development, data analysis, systems security, portfolio, projects",
+  robots: "index, follow",
   icons: [
     { rel: "apple-touch-icon", sizes: "180x180", url: "/apple-touch-icon.png" },
     {
@@ -65,6 +92,28 @@ export const metadata: Metadata = {
     { rel: "manifest", url: "/site.webmanifest" },
   ],
   manifest: "/site.webmanifest",
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: "https://ethancoward.dev",
+    siteName: "Ethan Coward",
+    title: "Ethan Coward | Personal Website & Portfolio",
+    description:
+      "Ethan Coward's personal website showcasing projects, skills, and experiences in web development, data analysis, and systems security.",
+    images: [
+      {
+        url: "https://ethancoward.dev/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ethan Coward",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@ethancoward_",
+    creator: "@ethancoward_",
+  },
 };
 
 export const viewport: Viewport = {

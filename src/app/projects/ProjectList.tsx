@@ -55,9 +55,9 @@ export function ProjectList({ repos }: { repos: Repo[] }) {
           Sort by:
         </label>
         <select
-          className="mt-2 block rounded-md border-2 border-gray-300 p-2 text-sm transition-colors focus:border-gray-500 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-gray-200 dark:focus:border-gray-600"
+          className="mt-2 block rounded-md border-2 border-gray-300 bg-white p-2 text-sm transition-colors focus:border-gray-500 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-gray-200 dark:focus:border-gray-600"
           value={sort}
-          onInput={(e) => setSort(e.currentTarget.value as SortOption)}
+          onChange={(e) => setSort(e.currentTarget.value as SortOption)}
         >
           <option value="stars">Stars</option>
           <option value="name">Name</option>
