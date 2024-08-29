@@ -6,21 +6,45 @@ import { useEffect, useState } from "react";
 import { ThemeSwitcher } from "~/app/_components/ThemeSwitcher";
 import { MenuIcon, CloseIcon } from "~/app/_components/icons";
 
-export function NavLink({ path, title }: { path: string; title: string }) {
-  const pathname = usePathname();
+export function NavLink({
+  path,
+  title,
+  isActive,
+  hoveredLink,
+  onMouseEnter,
+  onMouseLeave,
+}: {
+  path: string;
+  title: string;
+  isActive: boolean;
+  hoveredLink: string | null;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}) {
+  const showUnderline =
+    (isActive && (hoveredLink === null || hoveredLink === path)) ||
+    (!isActive && hoveredLink === path);
+
+  const linkClass = isActive
+    ? hoveredLink && hoveredLink !== path
+      ? "text-neutral-700 dark:text-neutral-300" // Active link when another is hovered
+      : "text-blue-500 dark:text-blue-400" // Active link when no other is hovered
+    : "text-neutral-700 hover:text-blue-500 dark:text-neutral-300 dark:hover:text-blue-400"; // Non-active link
 
   return (
-    <li className="w-full border-b border-neutral-200 hover:bg-neutral-100 md:border-none md:hover:scale-105 md:hover:bg-transparent dark:border-neutral-700 dark:hover:bg-neutral-800 dark:md:hover:bg-transparent">
+    <li className="w-full md:w-auto">
       <Link
         href={path}
-        className={`block px-6 py-4 md:ml-5 md:px-0 md:py-0 ${
-          pathname === path ||
-          (path === "/projects" && pathname.startsWith("/p/"))
-            ? "text-blue-500"
-            : ""
-        }`}
+        className={`group relative block px-6 py-4 transition-colors duration-300 md:px-3 md:py-2 ${linkClass}`}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
         {title}
+        <span
+          className={`absolute bottom-0 left-1/2 h-0.5 w-full origin-center -translate-x-1/2 transform rounded-full bg-blue-500 transition-transform duration-300 ease-out dark:bg-blue-400 ${
+            showUnderline ? "scale-x-100" : "scale-x-0"
+          }`}
+        />
       </Link>
     </li>
   );
@@ -30,6 +54,7 @@ export function NavBar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [prevLocation, setPrevLocation] = useState(pathname);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   useEffect(() => {
     if (pathname !== prevLocation) {
@@ -37,6 +62,11 @@ export function NavBar() {
       setOpen(false);
     }
   }, [pathname, prevLocation]);
+
+  const navLinks = [
+    { path: "/", title: "Home" },
+    { path: "/projects", title: "Projects" },
+  ];
 
   return (
     <>
@@ -53,8 +83,20 @@ export function NavBar() {
             </div>
 
             <ul className="ml-auto hidden items-center text-xl font-bold md:flex">
-              <NavLink path="/" title="Home" />
-              <NavLink path="/projects" title="Projects" />
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.path}
+                  path={link.path}
+                  title={link.title}
+                  isActive={
+                    pathname === link.path ||
+                    (link.path === "/projects" && pathname.startsWith("/p/"))
+                  }
+                  hoveredLink={hoveredLink}
+                  onMouseEnter={() => setHoveredLink(link.path)}
+                  onMouseLeave={() => setHoveredLink(null)}
+                />
+              ))}
             </ul>
 
             <button
@@ -71,8 +113,20 @@ export function NavBar() {
           </div>
           {open && (
             <ul className="flex w-full flex-col items-stretch pb-5 text-xl font-bold md:hidden">
-              <NavLink path="/" title="Home" />
-              <NavLink path="/projects" title="Projects" />
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.path}
+                  path={link.path}
+                  title={link.title}
+                  isActive={
+                    pathname === link.path ||
+                    (link.path === "/projects" && pathname.startsWith("/p/"))
+                  }
+                  hoveredLink={hoveredLink}
+                  onMouseEnter={() => setHoveredLink(link.path)}
+                  onMouseLeave={() => setHoveredLink(null)}
+                />
+              ))}
             </ul>
           )}
         </div>
