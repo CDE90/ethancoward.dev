@@ -59,7 +59,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
             {projects.map((project, index) => (
               <div key={index} className="w-full flex-shrink-0">
                 <Link href={project.link} className="block h-full">
-                  <div className="h-full bg-gray-100 p-6 dark:bg-neutral-800">
+                  <div className="h-full bg-gray-100 p-6 dark:bg-neutral-900">
                     <div className="relative mb-4 h-48 w-full">
                       <Image
                         src={project.image}
@@ -83,14 +83,14 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
         </div>
         <button
           onClick={goToPrevious}
-          className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white bg-opacity-50 p-2 shadow-md transition-all duration-200 hover:bg-opacity-75 dark:bg-neutral-600 dark:bg-opacity-50 dark:hover:bg-opacity-75"
+          className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white bg-opacity-50 p-2 shadow-md transition-all duration-200 hover:bg-opacity-75 dark:bg-neutral-700 dark:bg-opacity-50 dark:hover:bg-opacity-75"
           aria-label="Previous project"
         >
           &#10094;
         </button>
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white bg-opacity-50 p-2 shadow-md transition-all duration-200 hover:bg-opacity-75 dark:bg-neutral-600 dark:bg-opacity-50 dark:hover:bg-opacity-75"
+          className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white bg-opacity-50 p-2 shadow-md transition-all duration-200 hover:bg-opacity-75 dark:bg-neutral-700 dark:bg-opacity-50 dark:hover:bg-opacity-75"
           aria-label="Next project"
         >
           &#10095;
