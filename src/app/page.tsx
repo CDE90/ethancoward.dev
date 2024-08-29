@@ -1,4 +1,7 @@
-import Link from "next/link";
+import {
+  ProjectCarousel,
+  type Project,
+} from "~/app/_components/ProjectCarousel";
 
 export default function Home() {
   return (
@@ -6,132 +9,58 @@ export default function Home() {
       <div className="px-4 pt-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <h1 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100">
-            Hey, I&apos;m <em>Ethan</em>
+            Hello, I&apos;m <em>Ethan</em>
           </h1>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            I&apos;m an 18 y/o CS student from the UK. I like{" "}
-            <strong>making things</strong> and{" "}
-            <strong>listening to music</strong>. I&apos;d like to learn more
-            about <strong>web development</strong>,{" "}
-            <strong>data analysis</strong> and <strong>systems security</strong>
-            .
+            I&apos;m an 18-year-old CS student from the UK with a keen interest
+            in technology and software development. My current focus areas are{" "}
+            <strong>web development</strong> and <strong>data analysis</strong>.
+            When I&apos;m not coding, I enjoy exploring new technologies and
+            expanding my skill set.
           </p>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
             For the past few years, I&apos;ve been part of the data team at{" "}
-            <strong>HiveHR</strong>, a software company. I&apos;ve learnt tonnes
-            about libraries like <strong>Pandas</strong>, <strong>NumPy</strong>
-            , and <strong>Matplotlib</strong>, plus I&apos;ve become a pro at
-            automating data analysis in <strong>Google Sheets</strong>.
+            <strong>HiveHR</strong>, where I&apos;ve honed my skills in{" "}
+            <strong>Pandas</strong>, <strong>NumPy</strong>, and{" "}
+            <strong>Matplotlib</strong>. I&apos;ve also become proficient with{" "}
+            <strong>Google Sheets</strong>, creating efficient solutions for
+            data analysis tasks that previously took hours to complete.
           </p>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            As well as this, I have used <strong>PowerPoint</strong>{" "}
-            extensively. I&apos;ve used it to develop solutions to automatically
-            generate reports, which now gives us the ability to deliver in-depth
-            insights to our clients without having to spend hours on it.
+            I&apos;ve also become pretty handy with PowerPoint automation.
+            I&apos;ve built tools that churn out detailed reports for clients,
+            turning what used to be hours of work into a few clicks.
           </p>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
             <em>
-              Please note that this site is still under construction, not all
-              information is up to date, and some pages are missing.
+              Just a heads up: this site is always evolving! I&apos;m constantly
+              tinkering with it, adding new projects and polishing things up. So
+              if you spot anything wonky, it&apos;s probably just me in the
+              middle of an update. Feel free to check back often to see
+              what&apos;s new!
             </em>
           </p>
         </div>
       </div>
 
-      <div className="mb-4 px-4 pt-8 sm:px-6 lg:px-8">
+      <div className="w-full px-4 pt-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100">
-            Things I&apos;ve Built
+          <h2 className="mb-6 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100">
+            Recent Projects
           </h2>
-          <ul className="mb-4 flex list-disc flex-col gap-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            <li>
-              <a
-                href="/p/vcroles-bot"
-                className="text-blue-600 dark:text-blue-400"
-              >
-                VC Roles Discord Bot
-              </a>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                A Discord bot that adds much needed features to Discord Voice
-                Channels.
-              </p>
-            </li>
-            <li>
-              <a
-                href="/p/vcroles-website"
-                className="text-blue-600 dark:text-blue-400"
-              >
-                VC Roles Website & Dashboard
-              </a>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                The website for the VC Roles Discord Bot with a dashboard for
-                server management, documentation and more.
-              </p>
-            </li>
-            <li>
-              <a
-                href="/p/ethancoward-dev"
-                className="text-blue-600 dark:text-blue-400"
-              >
-                ethancoward.dev Website
-              </a>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                You&apos;re here! My personal website to showcase my projects
-                and other stuff.
-              </p>
-            </li>
-            <li>
-              <a
-                href="/p/website-analytics"
-                className="text-blue-600 dark:text-blue-400"
-              >
-                Website Analytics Dashboard
-              </a>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                A custom analytics tool to track website traffic display in a
-                dashboard.
-              </p>
-            </li>
-            <li>
-              <a
-                href="/p/hangman-game"
-                className="text-blue-600 dark:text-blue-400"
-              >
-                Hangman Game
-              </a>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                A simple web-based hangman game. Give it a go!
-              </p>
-            </li>
-          </ul>
-          <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            Here are a few projects that I&apos;ve built in my spare time. Click
-            on the links above to learn more about each one.
-          </p>
-          <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            I&apos;ve also contributed to various open source projects, but none
-            extensively enough to list here. If you&apos;re interested in
-            learning more about my contributions, check out my{" "}
-            <Link
-              href="https://github.com/CDE90"
-              className="text-blue-600 dark:text-blue-400"
-              target="_blank"
-            >
-              GitHub profile
-            </Link>
-            .
-          </p>
+          <ProjectCarousel projects={projects} />
         </div>
       </div>
 
       <div className="mb-4 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <h2 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100">
-            Get in touch
+            Let&apos;s Connect
           </h2>
           <p className="mb-4 text-gray-800 sm:text-lg dark:text-gray-300">
-            If you have any questions or comments, feel free to reach out to me
-            at{" "}
+            If you have a project idea, want to discuss technology trends, or
+            are interested in collaboration, please don&apos;t hesitate to reach
+            out. You can contact me at{" "}
             <strong className="group text-blue-600 transition-all duration-300 ease-in-out dark:text-blue-400">
               <a
                 className="bg-gradient-to-r from-blue-600 to-blue-600 bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-300 ease-out group-hover:bg-[length:100%_2px] dark:from-blue-400 dark:to-blue-400"
@@ -140,7 +69,8 @@ export default function Home() {
                 hello@ethancoward.dev
               </a>
             </strong>
-            . I&apos;m always happy to help!
+            . I&apos;m always open to interesting discussions and new
+            opportunities.
           </p>
         </div>
       </div>
@@ -151,6 +81,43 @@ export default function Home() {
     </div>
   );
 }
+
+const projects: Project[] = [
+  {
+    title: "VC Roles Discord Bot",
+    description:
+      "A Discord bot that adds much needed features to Discord Voice Channels.",
+    image: "https://www.vcroles.com/android-chrome-512x512.png",
+    link: "/p/vcroles-bot",
+  },
+  {
+    title: "VC Roles Website & Dashboard",
+    description:
+      "The website for the VC Roles Discord Bot with a dashboard for server management, documentation and more.",
+    image: "https://www.vcroles.com/android-chrome-512x512.png",
+    link: "/p/vcroles-website",
+  },
+  {
+    title: "ethancoward.dev Website",
+    description:
+      "You're here! My personal website to showcase my projects and other stuff.",
+    image: "/android-chrome-512x512.png",
+    link: "/p/ethancoward-dev",
+  },
+  {
+    title: "Website Analytics Dashboard",
+    description:
+      "A custom analytics tool to track website traffic display in a dashboard.",
+    image: "/images/litics-logo.svg",
+    link: "/p/website-analytics",
+  },
+  {
+    title: "Hangman Game",
+    description: "A simple web-based hangman game. Give it a go!",
+    image: "/images/hangman-logo.svg",
+    link: "/p/hangman-game",
+  },
+];
 
 export const metadata = {
   title: "Ethan Coward | Home",
