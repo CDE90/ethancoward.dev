@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import { NavBar } from "~/app/_components/NavBar";
 import { Footer } from "~/app/_components/Footer";
+import { CSPostHogProvider } from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,19 +18,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`font-sans ${inter.variable} flex h-screen flex-col justify-between bg-gray-100 text-gray-800 dark:bg-neutral-900 dark:text-gray-200`}
-      >
-        <header>
-          <NavBar />
-        </header>
-        <main className="mb-auto mt-24 pb-8">{children}</main>
-        <footer>
-          <Footer />
-        </footer>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+      <CSPostHogProvider>
+        <body
+          className={`font-sans ${inter.variable} flex h-screen flex-col justify-between bg-gray-100 text-gray-800 dark:bg-neutral-900 dark:text-gray-200`}
+        >
+          <header>
+            <NavBar />
+          </header>
+          <main className="mb-auto mt-24 pb-8">{children}</main>
+          <footer>
+            <Footer />
+          </footer>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
             (function() {
               function getInitialTheme() {
                 const storedTheme = localStorage.getItem('theme');
@@ -42,28 +44,29 @@ export default function RootLayout({
               document.documentElement.classList.add(theme);
             })();
           `,
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "http://schema.org",
-              "@type": "Person",
-              name: "Ethan Coward",
-              url: "https://ethancoward.dev",
-              sameAs: [
-                "https://github.com/CDE90",
-                "https://www.linkedin.com/in/ethan-coward/",
-                "https://twitter.com/ethancoward_",
-              ],
-              jobTitle: "CS Student",
-              description:
-                "18 y/o CS student from the UK, interested in web development, data analysis, and systems security.",
-            }),
-          }}
-        />
-      </body>
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "http://schema.org",
+                "@type": "Person",
+                name: "Ethan Coward",
+                url: "https://ethancoward.dev",
+                sameAs: [
+                  "https://github.com/CDE90",
+                  "https://www.linkedin.com/in/ethan-coward/",
+                  "https://twitter.com/ethancoward_",
+                ],
+                jobTitle: "CS Student",
+                description:
+                  "18 y/o CS student from the UK, interested in web development, data analysis, and systems security.",
+              }),
+            }}
+          />
+        </body>
+      </CSPostHogProvider>
     </html>
   );
 }
