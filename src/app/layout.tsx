@@ -115,9 +115,3 @@ export const metadata: Metadata = {
     creator: "@ethancoward_",
   },
 };
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  themeColor: "#12e4f3",
-};
