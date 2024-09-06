@@ -10,8 +10,13 @@ export default async function Projects() {
   const repos = await octokit.request("GET /users/{username}/repos", {
     username: "CDE90",
   });
+  const orgRepos = await octokit.request("GET /orgs/{org}/repos", {
+    org: "vcroles",
+  });
 
-  const reposData: Repo[] = repos.data.map((repo) => ({
+  const allRepos = [...repos.data, ...orgRepos.data];
+
+  const reposData: Repo[] = allRepos.map((repo) => ({
     name: repo.name,
     description: repo.description,
     html_url: repo.html_url,
