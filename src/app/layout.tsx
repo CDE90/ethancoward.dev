@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { NavBar } from "~/app/_components/NavBar";
 import { Footer } from "~/app/_components/Footer";
 import { CSPostHogProvider } from "./providers";
+import SpotifyWidget from "./_components/SpotifyWidget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
           <footer>
             <Footer />
           </footer>
+          <SpotifyWidget />
           <script
             dangerouslySetInnerHTML={{
               __html: `
